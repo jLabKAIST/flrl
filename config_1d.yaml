@@ -1,0 +1,57 @@
+exp_desc: exp_name
+feature_extractor: cnn
+total_timesteps: 100000
+policy_type: null
+pi_layer_size: 128
+vf_layer_size: 128
+pi_layer_width: 3
+vf_layer_width: 3
+minibatch_ratio: 0.5
+nsteps_ratio: 1
+log_std_init: 0
+clip_range_start: 0.4
+clip_range_end: 0.4
+end_fraction: 1
+env:
+  max_t_prev: 4
+  max_steps: 256
+  n_envs: 4
+  obs_normalization: power
+  action_scaling: 0.01
+  Nx: 16
+  Ny: 0
+  tfo_x: 100
+  tfo_y: 0
+  grid_x: 256
+  grid_y: 1
+  surface_shape:
+  - 1
+  - $grid_y
+  - $grid_x
+  wavelength: 1100
+  angle: 60
+  pol: 1
+  obs_bound: 10
+  action_bound: 10
+  reward_scaling: 100
+  obs_input: flat
+  vec_norm_kwargs:
+    norm_obs: false
+    norm_reward: true
+    clip_obs: 10
+  real_action_dim: null
+  imag_action_dim: null
+cnn:
+  latent_dim: 128
+mlp: null
+ppo:
+  learning_rate: 0.003
+  n_epochs: 3
+  gamma: 0.9
+  gae_lambda: 0.95
+  stats_window_size: 4
+  seed: 42
+  use_sde: false
+  verbose: 1
+  ent_coef: 0.01
+  vf_coef: 0.1
